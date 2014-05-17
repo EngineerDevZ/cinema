@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140517121349) do
+ActiveRecord::Schema.define(version: 20140517175745) do
 
   create_table "genres", force: true do |t|
     t.string   "name"
@@ -25,6 +25,22 @@ ActiveRecord::Schema.define(version: 20140517121349) do
     t.string   "description"
     t.integer  "duration"
     t.integer  "genre_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "rooms", force: true do |t|
+    t.integer  "capacity"
+    t.integer  "room_number"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "seats", force: true do |t|
+    t.integer  "sector"
+    t.string   "row"
+    t.integer  "number"
+    t.integer  "room_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
