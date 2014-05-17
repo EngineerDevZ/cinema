@@ -1,0 +1,27 @@
+<% provide(:title, 'Add movie') %>
+<h1>Add movie</h1>
+
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(@movie) do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+	  
+      <%= f.label :title %>
+      <%= f.text_field :title %>
+
+      <%= f.label :director %>
+      <%= f.text_field :director %>
+
+      <%= f.label :description %>
+      <%= f.text_field :description %>
+
+      <%= f.label :duration %>
+      <%= f.number_field :duration %>
+	  
+	  <%= f.label :genre_id %>
+	  <%= f.select :genre_id, options_from_collection_for_select(Genre.all, 'id', 'name') %>
+
+      <%= f.submit "Add movie", class: "btn btn-large btn-primary" %>
+    <% end %>
+  </div>
+</div>
