@@ -19,7 +19,7 @@
       <%= f.number_field :duration %>
 	  
 	  <%= f.label :genre_id %>
-	  <%= f.select :genre_id, options_from_collection_for_select(Genre.all, 'id', 'name') %>
+	  <%= f.select :genre_id, options_from_collection_for_select(Genre.all, 'id', 'name', @movie.genre_id) %>
 
       <%= f.submit "Update movie", class: "btn btn-large btn-primary" %>
     <% end %>
