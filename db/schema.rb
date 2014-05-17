@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140517175745) do
+ActiveRecord::Schema.define(version: 20140517203654) do
 
   create_table "genres", force: true do |t|
     t.string   "name"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 20140517175745) do
     t.integer  "genre_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "image"
   end
 
   create_table "rooms", force: true do |t|
@@ -41,6 +42,24 @@ ActiveRecord::Schema.define(version: 20140517175745) do
     t.string   "row"
     t.integer  "number"
     t.integer  "room_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "showing_statuses", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "showings", force: true do |t|
+    t.decimal  "price"
+    t.datetime "date"
+    t.boolean  "is3d"
+    t.integer  "vat"
+    t.integer  "movie_id"
+    t.integer  "room_id"
+    t.integer  "showing_status_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

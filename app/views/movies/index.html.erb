@@ -1,6 +1,10 @@
 <% provide(:title, 'All movies') %>
 <h1>All movies</h1>
 
-<ul class="movies">
+<%= will_paginate %>
+
+<div class="row">
   <%= render @movies %>
-</ul>
+</div>
+
+<%= will_paginate %>

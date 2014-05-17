@@ -2,7 +2,7 @@ class MoviesController < ApplicationController
   before_action :signed_in_user
   
   def index
-    @movies = Movie.all
+    @movies = Movie.paginate(page: params[:page])
   end
   
   def show
@@ -43,6 +43,6 @@ class MoviesController < ApplicationController
   private
 
     def movie_params
-      params.require(:movie).permit(:title, :director, :description, :duration, :genre_id)
+      params.require(:movie).permit(:title, :director, :description, :duration, :genre_id, :remote_image_url)
     end
 end

@@ -3,7 +3,7 @@
 
 <div class="row">
   <div class="span6 offset3">
-    <%= form_for(@movie) do |f| %>
+    <%= form_for @movie, :html => {:multipart => true} do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
 	  
       <%= f.label :title %>
@@ -17,6 +17,9 @@
 
       <%= f.label :duration %>
       <%= f.number_field :duration %>
+	  
+	  <%= f.label :remote_image_url %>
+	  <%= f.text_field :remote_image_url %>
 	  
 	  <%= f.label :genre_id %>
 	  <%= f.select :genre_id, options_from_collection_for_select(Genre.all, 'id', 'name') %>
