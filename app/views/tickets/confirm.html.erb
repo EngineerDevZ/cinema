@@ -1,0 +1,10 @@
+<% provide(:title, "Ticket confirmation") %>
+<div class="row">
+	<%= @ticket.showing.movie.title %>
+	<%= @ticket.showing.room.room_number %>
+	<%= @ticket_seat_showing.seat.row %>
+	<%= @ticket_seat_showing.seat.number %>
+	<%= @ticket.discount.name %>
+	<%= @ticket.showing.price %>
+	<a class="btn" href="#">Pay</a>
+</div>

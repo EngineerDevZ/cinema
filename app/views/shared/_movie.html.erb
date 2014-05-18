@@ -1,9 +1,11 @@
+<% if movie.showings.where(showing_status_id: 1).any? %>
 <div class="col-lg-4">
 	<div class="thumbnail">
 		<%= link_to image_tag(movie.image_url.to_s), movie_path(movie) %>
 		<div class="caption">
 			<h4><%= link_to movie.title, movie_path(movie) %></h4>
-			<p><%= movie.genre.name %><%= link_to "Edit", edit_movie_path(movie), class: "btn btn-right" %></p>
+			<p><%= movie.genre.name %><%= link_to "Buy ticket", showing_path(movie), class: "btn btn-right" %></p>
 		</div>
 	</div>
 </div>
+<% end %>

@@ -1,0 +1,4 @@
+<% if @movie_items.any? %>
+  <%= render partial: 'shared/movie', collection: @movie_items %>
+  <%= will_paginate @movie_items %>
+<% end %>

@@ -1,5 +1,6 @@
 class MoviesController < ApplicationController
   before_action :signed_in_user
+  before_action :admin_user, only: [:edit, :update, :index, :new, :create]
   
   def index
     @movies = Movie.paginate(page: params[:page])
@@ -44,5 +45,9 @@ class MoviesController < ApplicationController
 
     def movie_params
       params.require(:movie).permit(:title, :director, :description, :duration, :genre_id, :remote_image_url)
+    end
+	
+	def admin_user
+      redirect_to(root_url) unless current_user.admin?
     end
 end

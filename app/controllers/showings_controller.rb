@@ -3,7 +3,7 @@ class ShowingsController < ApplicationController
   
   def show
     @movie = Movie.find(params[:id])
-    @showing = Showing.where(movie_id: params[:id])
+    @showings = Showing.where(movie_id: params[:id])
   end
  
 end

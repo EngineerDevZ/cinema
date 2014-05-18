@@ -1,5 +1,11 @@
+<% if !signed_in? %>
 <div class="center hero-unit">
   <h1>Welcome to the Jumanji Cinema</h1>
 
   <%= link_to "Sign up now!", signup_path, class: "btn btn-large btn-primary" %>
+</div>
+<% end %>
+<h3>Current showings</h3>
+<div class="row">
+  <%= render 'shared/movies' %>
 </div>

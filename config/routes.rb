@@ -3,13 +3,16 @@ Cinema::Application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
   resources :movies
   resources :showings
+  resources :tickets
   root  'static_pages#home'
+  match '/tickets/confirm/:id1/:id2', to: 'tickets#confirm', via: 'get'
   match '/signup',  to: 'users#new',            via: 'get'
   match '/signin',  to: 'sessions#new',         via: 'get'
   match '/signout', to: 'sessions#destroy',     via: 'delete'
   match '/help',    to: 'static_pages#help',    via: 'get'
   match '/about',   to: 'static_pages#about',   via: 'get'
   match '/contact', to: 'static_pages#contact', via: 'get'
+  match '/admin',	to: 'static_pages#admin',	via: 'get'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

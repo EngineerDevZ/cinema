@@ -11,7 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140517203654) do
+ActiveRecord::Schema.define(version: 20140518194240) do
+
+  create_table "discounts", force: true do |t|
+    t.string   "name"
+    t.integer  "value"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "genres", force: true do |t|
     t.string   "name"
@@ -64,6 +71,29 @@ ActiveRecord::Schema.define(version: 20140517203654) do
     t.datetime "updated_at"
   end
 
+  create_table "ticket_seat_showings", force: true do |t|
+    t.integer  "ticket_id"
+    t.integer  "seat_id"
+    t.integer  "showing_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "ticket_statuses", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "tickets", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "showing_id"
+    t.integer  "discount_id"
+    t.integer  "ticket_status_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "users", force: true do |t|
     t.string   "name"
     t.string   "email"
@@ -71,6 +101,7 @@ ActiveRecord::Schema.define(version: 20140517203654) do
     t.datetime "updated_at"
     t.string   "password_digest"
     t.string   "remember_token"
+    t.boolean  "admin",           default: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
