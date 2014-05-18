@@ -1,0 +1,13 @@
+<% provide(:title, @movie.title) %>
+<div class="row">
+	<div class="col-lg-4">
+		<div class="thumbnail">
+			<%= image_tag @movie.image_url.to_s %>
+			<div class="caption">
+				<h4><a href="#"><%= @movie.title %></a>
+				</h4>
+				<p><%= @movie.genre.name %></p>
+			</div>
+		</div>
+	</div>
+</div>
