@@ -1,0 +1,33 @@
+<% provide(:title, 'Add showing') %>
+<h1>Add showing</h1>
+
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for @showing do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+	  
+      <%= f.label :date %>
+      <%= f.datetime_local_field :date %>
+
+      <%= f.label :price %>
+      <%= f.number_field :price %>
+
+      <%= f.label "3d" %>
+      <%= f.text_field :is3d %>
+
+      <%= f.label :vat %>
+      <%= f.number_field :vat %>
+	  
+	  <%= f.label :movie_id %>
+	  <%= f.select :movie_id, options_from_collection_for_select(Movie.all, 'id', 'title') %>
+	  
+	  <%= f.label :showing_status_id %>
+	  <%= f.select :showing_status_id, options_from_collection_for_select(ShowingStatus.all, 'id', 'name') %>
+	  
+	  <%= f.label :room_id %>
+	  <%= f.select :room_id, options_from_collection_for_select(Room.all, 'id', 'room_number') %>
+
+      <%= f.submit "Add showing", class: "btn btn-large btn-primary" %>
+    <% end %>
+  </div>
+</div>

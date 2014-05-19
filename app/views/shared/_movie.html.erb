@@ -4,7 +4,7 @@
 		<%= link_to image_tag(movie.image_url.to_s), movie_path(movie) %>
 		<div class="caption">
 			<h4><%= link_to movie.title, movie_path(movie) %></h4>
-			<p><%= movie.genre.name %><%= link_to "Buy ticket", showing_path(movie), class: "btn btn-right" %></p>
+			<p><%= movie.genre.name %><%= link_to "Buy ticket", showing_path(movie) + "/" + Date.today.to_s, class: "btn btn-right" %></p>
 		</div>
 	</div>
 </div>

@@ -1,0 +1,10 @@
+<% provide(:title, 'All showings') %>
+<h1>All Showings</h1>
+
+<div class="row">
+  <div class="showings-col">
+    <%= render partial: 'sshowing', collection: @sshowings %>
+  </div>
+</div>
+
+<%= will_paginate @sshowings %>

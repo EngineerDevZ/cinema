@@ -180,9 +180,21 @@ input {
   padding-left: 50px;
 }
 
+table {
+  border-collapse: separate !important;
+  border-spacing: 2px !important;
+}
+
 .seat {
-  margin: 5px;
   border: 2px solid rgba(0, 0, 0, 0.15);
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  text-align: center;
+  min-width: 35px;
+}
+
+.gray {
+  background: rgba(0, 0, 0, 0.05);
 }
 
 .seat_div {
@@ -207,4 +219,21 @@ img {
 
 .movie-info {
   margin-top: 30px;
+}
+
+.showings-col {
+  margin: 20px;
+  padding-left: 50px;
+}
+
+.cent {
+  margin-left: 110px;
+}
+
+.screen {
+  background: rgba(0, 0, 0, 0.05);
+  text-align: center;
+  margin-bottom: 30px;
+  width: 400px;
+  margin-left: 275px;
 }
