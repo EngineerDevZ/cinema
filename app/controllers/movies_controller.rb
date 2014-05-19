@@ -1,5 +1,5 @@
 class MoviesController < ApplicationController
-  before_action :signed_in_user
+  before_action :signed_in_user, only: [:edit, :update, :index, :new, :create]
   before_action :admin_user, only: [:edit, :update, :index, :new, :create]
   
   def index

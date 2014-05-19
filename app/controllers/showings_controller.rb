@@ -7,12 +7,13 @@ class ShowingsController < ApplicationController
   
   def show
     @movie = Movie.find(params[:id])
-    @showings = Showing.where(movie_id: params[:id])
-    /*@showings2.each do |x|
-		if x.date == params[:date].to_date
-			@showings << x
-		end
-	end*/
+    @showings2 = Showing.where(movie_id: params[:id], showing_status_id: 1)
+	@showings = Array.new
+	@showings2.each do |x|
+	  if x.date.to_date == params[:date].to_date
+	    @showings.push(x)
+	  end
+	end
   end
   
   def edit
