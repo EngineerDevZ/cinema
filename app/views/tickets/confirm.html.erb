@@ -1,10 +1,20 @@
 <% provide(:title, "Ticket confirmation") %>
 <div class="row">
-	<%= @ticket.showing.movie.title %>
+  <div class="ticket">
+    <%= @ticket.showing.movie.title %>
 	<%= @ticket.showing.room.room_number %>
 	<%= @ticket_seat_showing.seat.row %>
 	<%= @ticket_seat_showing.seat.number %>
 	<%= @ticket.discount.name %>
 	<%= @ticket.showing.price %>
-	<a class="btn" href="#">Pay</a>
+	<%= form_tag("https://sandbox.przelewy24.pl/index.php", :method=>'post') do %>
+	<%= hidden_field_tag "p24_session_id", @session_id %>
+	<%= hidden_field_tag "p24_id_sprzedawcy", "27463" %>
+	<%= hidden_field_tag "p24_kwota", ((@ticket.showing.price - (@ticket.showing.price * (@ticket.discount.value/100))) * 100) %>
+	<%= hidden_field_tag "p24_email", current_user.email %>
+	<%= hidden_field_tag "p24_return_url_ok", root_url + "tickets/ok/" + params[:id1] + "/" + params[:id2] %>
+	<%= hidden_field_tag "p24_return_url_error", root_url + "tickets/err" %>
+	<%= submit_tag 'Pay', class: "btn" %>
+	<% end %>
+  </div>
 </div>

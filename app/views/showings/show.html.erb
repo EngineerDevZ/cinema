@@ -10,11 +10,35 @@
 		</div>
 	</div>
 	<div class="span8">
-    <% if !@showings.nil? %>
+    <% if @showings.any? %>
       <h3>Showings</h3>
+	  <%= Date.today.strftime("%B") %>: 
+	  <div class="btn-group">May
+	  <%= link_to Date.today.day, showing_path(@movie) + "/" + Date.today.to_s, type: "button", class: "btn btn-default" %>
+	  <%= link_to (Date.today + 1).day, showing_path(@movie) + "/" + (Date.today + 1).to_s, type: "button", class: "btn btn-default" %>
+	  <%= link_to (Date.today + 2).day, showing_path(@movie) + "/" + (Date.today + 2).to_s, type: "button", class: "btn btn-default" %>
+	  <%= link_to (Date.today + 3).day, showing_path(@movie) + "/" + (Date.today + 3).to_s, type: "button", class: "btn btn-default" %>
+	  <%= link_to (Date.today + 4).day, showing_path(@movie) + "/" + (Date.today + 4).to_s, type: "button", class: "btn btn-default" %>
+	  <%= link_to (Date.today + 5).day, showing_path(@movie) + "/" + (Date.today + 5).to_s, type: "button", class: "btn btn-default" %>
+	  <%= link_to (Date.today + 6).day, showing_path(@movie) + "/" + (Date.today + 6).to_s, type: "button", class: "btn btn-default" %>
+      </div>
+	  <h5>Hours: </h5>
       <ol class="microposts">
         <%= render @showings %>
       </ol>
-    <% end %>
+    <% else %>
+	  <h3>Showings</h3>
+	  <%= Date.today.strftime("%B") %>: 
+	  <div class="btn-group">
+	  <%= link_to Date.today.day, showing_path(@movie) + "/" + Date.today.to_s, type: "button", class: "btn btn-default" %>
+	  <%= link_to (Date.today + 1).day, showing_path(@movie) + "/" + (Date.today + 1).to_s, type: "button", class: "btn btn-default" %>
+	  <%= link_to (Date.today + 2).day, showing_path(@movie) + "/" + (Date.today + 2).to_s, type: "button", class: "btn btn-default" %>
+	  <%= link_to (Date.today + 3).day, showing_path(@movie) + "/" + (Date.today + 3).to_s, type: "button", class: "btn btn-default" %>
+	  <%= link_to (Date.today + 4).day, showing_path(@movie) + "/" + (Date.today + 4).to_s, type: "button", class: "btn btn-default" %>
+	  <%= link_to (Date.today + 5).day, showing_path(@movie) + "/" + (Date.today + 5).to_s, type: "button", class: "btn btn-default" %>
+	  <%= link_to (Date.today + 6).day, showing_path(@movie) + "/" + (Date.today + 6).to_s, type: "button", class: "btn btn-default" %>
+	  </div>
+	  <h5>No showings this day</h5>
+	<% end %>
   </div>
 </div>
