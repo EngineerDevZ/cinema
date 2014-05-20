@@ -1,1 +1,14 @@
-Ticket purchased
+<% provide(:title, "Ticket purchased") %>
+<div class="row">
+  <div class="span8">
+  	<h3>Ticket purchased!</h3>
+  	<h3>Your ticket number: <%= @ticket.id.to_s %></h3>
+  	<h3><%= @ticket.showing.movie.title %></h3>
+	<h4><%= @ticket.showing.date.strftime("%Y-%m-%d %H:%M") %></h4>
+	<h4>Room: <%= @ticket.showing.room.room_number %></h4>
+	<h4>Row: <%= @ticket_seat_showing.seat.row %></h4>
+	<h4>Seat number: <%= @ticket_seat_showing.seat.number %></h4>
+	<h4>Discount: <%= @ticket.discount.name %></h4>
+	<h4>Price: <%= number_with_precision(@ticket.showing.price - (@ticket.showing.price * (@ticket.discount.value/100)), precision: 2) %></h4>
+  </div>
+</div>

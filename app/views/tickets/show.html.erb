@@ -1,42 +1,55 @@
 <% provide(:title, @showing.movie.title) %>
 <div class="row">
-	<div class="span8">
+    <div class="span8">
     <% if @showing.room.room_number == 1 %>
       <h3><%= @showing.movie.title %></h3>
       <h4><%= @showing.date.strftime("%Y-%m-%d %H:%M") %></h4>
-	  <h4>Room: <%= @showing.room.room_number %></h4>
+      <h4>Room: <%= @showing.room.room_number %></h4>
+      <% if @ticket.discount.id == 1 %>
+      <h4>Discount: <%= @ticket.discount.name %> | Change discount:  <%= link_to "Student", ticket_path(@showing) + "/2" %> </h4>
+      <% else %>
+      <h4>Discount: <%= @ticket.discount.name %> | Change discount:  <%= link_to "Normal", ticket_path(@showing) + "/1" %> </h4>
+      <% end %>
     <% end %>
   </div>
 </div>
 <div class="screen">SCREEN</div>
 <div class="cent">
-	<table>
-		<tbody>
-			<% $i = 1 %>
-			<% @showing.room.seats.pluck(:row).uniq.each do |x| %>
-			<tr>
-				<td class="seat"><%= x %></td>
-				<% @showing.room.seats.each do |y|  %>
-				    <% if x == y.row.to_s %>
-						<% if $i.odd? %>
-							<% if TicketSeatShowing.where(showing_id: @showing.id, seat_id: y.id).any? %>
-								<td class="seat taken"><div class="seat_div" id=<%= y.id.to_s %>></div></td>
-							<% else %>
-							    <td class="seat gray"><div class="seat_div" id=<%= y.id.to_s %>><%= link_to y.number, "confirm/" + @showing.id.to_s + "/" + y.id.to_s %></div></td>
-							<% end %>
-						<% else %>
-							<% if TicketSeatShowing.where(showing_id: @showing.id, seat_id: y.id).any? %>
-								<td class="seat taken"><div class="seat_div" id=<%= y.id.to_s %>></div></td>
-							<% else %>
-								<td class="seat"><div class="seat_div" id=<%= y.id.to_s %>><%= link_to y.number, "confirm/" + @showing.id.to_s + "/" + y.id.to_s %></div></td>
-							<% end %>
-						<% end %>
-						<% $i += 1 %>
-					<% end %>
-				<% end %>
-			</tr>
-			<% $i += 1 %>
-			<% end %>
-		</tbody>
-	</table>
+    <table>
+        <tbody>
+            <% $i = 1 %>
+            <% @showing.room.seats.pluck(:row).uniq.each do |x| %>
+            <tr>
+                <td class="seat"><%= x %></td>
+                <% @showing.room.seats.each do |y|  %>
+                    <% if x == y.row.to_s %>
+                        <% if $i.odd? %>
+                            <% if TicketSeatShowing.where(showing_id: @showing.id, seat_id: y.id).any? %>
+                                <td class="seat taken"><div class="seat_div" id=<%= y.id.to_s %>></div></td>
+                            <% else %>
+                                <td class="seat gray">
+                                    <div class="seat_div" id=<%= y.id.to_s %>>
+                                        <a href='<%= "#{root_path}tickets/confirm/#{@showing.id}/#{y.id}/#{@ticket.discount.id}" %>'><%= y.number %></a>
+                                    </div>
+                                </td>
+                            <% end %>
+                        <% else %>
+                            <% if TicketSeatShowing.where(showing_id: @showing.id, seat_id: y.id).any? %>
+                                <td class="seat taken"><div class="seat_div" id=<%= y.id.to_s %>></div></td>
+                            <% else %>
+                                <td class="seat">
+                                    <div class="seat_div" id=<%= y.id.to_s %>>
+                                        <a href='<%= "#{root_path}tickets/confirm/#{@showing.id}/#{y.id}/#{@ticket.discount.id}" %>'><%= y.number %></a>
+                                    </div>
+                                </td>
+                            <% end %>
+                        <% end %>
+                        <% $i += 1 %>
+                    <% end %>
+                <% end %>
+            </tr>
+            <% $i += 1 %>
+            <% end %>
+        </tbody>
+    </table>
 </div>

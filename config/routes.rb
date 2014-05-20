@@ -5,8 +5,10 @@ Cinema::Application.routes.draw do
   resources :showings
   resources :tickets
   root  'static_pages#home'
-  match '/tickets/confirm/:id1/:id2', 	to: 'tickets#confirm', 		via: 'get'
-  match '/tickets/ok/:id1/:id2',		to: 'tickets#confirm_ok',	via: 'post'
+  match '/tickets/:id1/:id2',		to: 'tickets#show', 		via: 'get'
+  match '/tickets/confirm/:id1/:id2/:id3', 	to: 'tickets#confirm', 		via: 'get'
+  match '/tickets/ok/:id1/:id2/:id3',		to: 'tickets#confirm_ok',	via: 'post'
+  match '/err', to: 'tickets#confirm_err', via: 'get'
   match '/showings/:id/:date', to: 'showings#show', via: 'get'
   match '/signup',  to: 'users#new',            via: 'get'
   match '/signin',  to: 'sessions#new',         via: 'get'

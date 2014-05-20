@@ -1,18 +1,19 @@
 <% provide(:title, "Ticket confirmation") %>
 <div class="row">
-  <div class="ticket">
-    <%= @ticket.showing.movie.title %>
-	<%= @ticket.showing.room.room_number %>
-	<%= @ticket_seat_showing.seat.row %>
-	<%= @ticket_seat_showing.seat.number %>
-	<%= @ticket.discount.name %>
-	<%= @ticket.showing.price %>
+  <div class="span8">
+    <h3><%= @ticket.showing.movie.title %></h3>
+	<h4><%= @ticket.showing.date.strftime("%Y-%m-%d %H:%M") %></h4>
+	<h4>Room: <%= @ticket.showing.room.room_number %></h4>
+	<h4>Row: <%= @ticket_seat_showing.seat.row %></h4>
+	<h4>Seat number: <%= @ticket_seat_showing.seat.number %></h4>
+	<h4>Discount: <%= @ticket.discount.name %></h4>
+	<h4>Price: <%= number_with_precision(@ticket.showing.price - (@ticket.showing.price * (@ticket.discount.value/100)), precision: 2) %></h4>
 	<%= form_tag("https://sandbox.przelewy24.pl/index.php", :method=>'post') do %>
 	<%= hidden_field_tag "p24_session_id", @session_id %>
 	<%= hidden_field_tag "p24_id_sprzedawcy", "27463" %>
 	<%= hidden_field_tag "p24_kwota", ((@ticket.showing.price - (@ticket.showing.price * (@ticket.discount.value/100))) * 100) %>
 	<%= hidden_field_tag "p24_email", current_user.email %>
-	<%= hidden_field_tag "p24_return_url_ok", root_url + "tickets/ok/" + params[:id1] + "/" + params[:id2] %>
+	<%= hidden_field_tag "p24_return_url_ok", root_url + "tickets/ok/" + params[:id1] + "/" + params[:id2] + "/" + params[:id3] %>
 	<%= hidden_field_tag "p24_return_url_error", root_url + "tickets/err" %>
 	<%= submit_tag 'Pay', class: "btn" %>
 	<% end %>

@@ -6,6 +6,9 @@
         <%= gravatar_for @user %>
         <%= @user.name %>
       </h1>
+      <ol class="microposts">
+        <%= render partial: 'ticket', collection: @tickets %>
+      </ol>
     </section>
   </aside>
 </div>
