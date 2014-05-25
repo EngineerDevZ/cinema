@@ -9,6 +9,6 @@
 	<h4>Row: <%= @ticket_seat_showing.seat.row %></h4>
 	<h4>Seat number: <%= @ticket_seat_showing.seat.number %></h4>
 	<h4>Discount: <%= @ticket.discount.name %></h4>
-	<h4>Price: <%= number_with_precision(@ticket.showing.price - (@ticket.showing.price * (@ticket.discount.value/100)), precision: 2) %></h4>
+	<h4>Price: <%= number_with_precision(@ticket.showing.price - (@ticket.showing.price * (@ticket.discount.value/100.0)), precision: 2) %></h4>
   </div>
 </div>

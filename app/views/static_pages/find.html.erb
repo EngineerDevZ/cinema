@@ -1,5 +1,6 @@
 <span class="ticket">
 	Ticket owner: <%= @ticket.user.name %> | <%= @ticket.user.email %>
+	Ticket type: <%= @ticket.discount.name %>
 	Ticket number: <%= @ticket.id.to_s %>
 	Movie: <%= @ticket.showing.movie.title %>
 	Date: <%= @ticket.showing.date.strftime("%Y-%m-%d %H:%M") %>
