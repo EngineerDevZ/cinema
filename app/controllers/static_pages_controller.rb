@@ -1,6 +1,6 @@
 class StaticPagesController < ApplicationController
-  before_action :signed_in_user, only: :admin
-  before_action :admin_user, only: :admin
+  before_action :signed_in_user, only: [:admin, :find, :find_ticket]
+  before_action :admin_user, only: [:admin, :find, :find_ticket]
 
   def home
     @movie_items = Movie.paginate(page: params[:page])
@@ -16,6 +16,10 @@ class StaticPagesController < ApplicationController
   end
   
   def admin
+  end
+
+  def find
+    @ticket = Ticket.find(params[:ticket_id])
   end
   
   private

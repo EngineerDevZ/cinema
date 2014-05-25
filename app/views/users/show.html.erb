@@ -6,9 +6,14 @@
         <%= gravatar_for @user %>
         <%= @user.name %>
       </h1>
-      <ol class="microposts">
-        <%= render partial: 'ticket', collection: @tickets %>
-      </ol>
     </section>
   </aside>
+</div>
+<div class="row">
+  <ol class="microposts">
+    <% if @tickets.any? %>
+    <h5>Your tickets:</h5>
+    <% end %>
+    <%= render partial: 'ticket', collection: @tickets %>
+  </ol>
 </div>

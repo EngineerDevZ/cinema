@@ -1,5 +1,9 @@
 <li>
-  <span class="content">
-	Ticket number: <%= ticket.id.to_s %> | <%= ticket.showing.movie.title %> | <%= ticket.showing.date.strftime("%Y-%m-%d %H:%M") %>
+  <span class="ticket">
+	Ticket number: <%= ticket.id.to_s %>
+	Movie: <%= ticket.showing.movie.title %>
+	Date: <%= ticket.showing.date.strftime("%Y-%m-%d %H:%M") %>
+	Seat row: <%= ticket.ticket_seat_showing.seat.row %>
+	Seat number: <%= ticket.ticket_seat_showing.seat.number %>
   </span>
 </li>

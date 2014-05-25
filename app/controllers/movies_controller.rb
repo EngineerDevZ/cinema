@@ -37,9 +37,6 @@ class MoviesController < ApplicationController
       render 'new'
     end
   end
-
-  def destroy
-  end
   
   private
 
@@ -47,7 +44,7 @@ class MoviesController < ApplicationController
       params.require(:movie).permit(:title, :director, :description, :duration, :genre_id, :remote_image_url)
     end
 	
-	def admin_user
+    def admin_user
       redirect_to(root_url) unless current_user.admin?
     end
 end
