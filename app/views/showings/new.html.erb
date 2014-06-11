@@ -12,8 +12,13 @@
       <%= f.label :price %>
       <%= f.number_field :price %>
 
-      <%= f.label "3d" %>
-      <%= f.text_field :is3d %>
+      <%= f.label :is3d, "3d" %>
+      <div class="radio_buttons">
+        <%= f.radio_button :is3d, "true" , :checked => true , :value => "true" %>
+        <%= f.label :is3d, "Yes", :class => "radio_buttons" %>
+        <%= f.radio_button :is3d, "false", :value => "false" %>
+        <%= f.label :is3d, "No", :class => "radio_buttons" %>
+      </div>
 
       <%= f.label :vat %>
       <%= f.number_field :vat %>
